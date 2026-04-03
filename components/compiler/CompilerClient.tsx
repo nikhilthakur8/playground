@@ -129,15 +129,11 @@ export function CompilerClient() {
 
   const handleLanguageChange = useCallback(
     (lang: Language) => {
-      setLanguage((prev) => {
-        // Swap boilerplate if current code is the old boilerplate or empty
-        if (code === prev.boilerplate || code.trim() === "") {
-          setCode(lang.boilerplate);
-        }
-        return lang;
-      });
+      setLanguage(lang);
+      setCode(lang.boilerplate);
+      setResult(null);
     },
-    [code]
+    []
   );
 
   const handleRun = useCallback(async () => {
